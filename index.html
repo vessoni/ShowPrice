@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price Game</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      #score {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+
+      #price-display {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      button {
+        font-size: 1.2em;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Price Game</h1>
+
+    <div id="score">Total Score: <span id="total">0</span></div>
+    <div id="price-display">Price: <span id="price">0</span></div>
+
+    <button onclick="showPrice()">Show Price</button>
+
+    <script>
+      const priceItems = [-50, 100, -20, 200, -100, 50, -150, 10];
+
+      let totalScore = 0;
+
+      function showPrice() {
+        const randomIndex = Math.floor(Math.random() * priceItems.length);
+        const price = priceItems[randomIndex];
+
+        document.getElementById("price").textContent = price;
+
+        totalScore += price;
+        document.getElementById("total").textContent = totalScore;
+
+        const resultMessage =
+          price >= 0 ? `You won £${price}` : `You lost £${-price}`;
+        alert(resultMessage);
+      }
+    </script>
+  </body>
+</html>
